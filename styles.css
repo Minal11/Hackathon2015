@@ -1,0 +1,15 @@
+#mainframe{
+	width: 500px;
+     height:500px;
+     margin: 0px auto;
+     border: 1px solid black;
+	background-image:'images/bkg3.png';
+
+}
+
+#backgroundCanvas{
+	
+	background-color:#000;
+
+
+}

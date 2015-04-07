@@ -1,0 +1,19 @@
+Team -6
+
+Website is hosted on iris.ils.indiana.edu
+
+URL: http://ella.ils.indiana.edu/mkondawa/hackthon2015/game/team6.html
+
+Game is based on " Micro affirmation"
+
+Use arrow keys to play the games. Small rectangle should be use to hit the stars. You dont know whats behind the star- there may bad people or good people. According to what you encounter your point will increase or decrease
+
+If you meet good people points increases otherwise decreases.
+
+If you stay on image ( remain with them ) girl's light will keep increasing or decreasing accordingly.
+
+This  game is to convey the message "Micro affirmation" is important to boost someone's confident and help others to grow, motivate, learn new things. Life of someone becomes so enlightened because of Micro affirmation.
+
+Source code folder: www/hackthon2015/game/
+
+Note: Dont change the spelling though there is mistake :)

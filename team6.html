@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hackathon2015-Team6</title>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+	<!-- HTML shim for IE backwards compatibility -->
+		<!--[if lt IE 9]>
+    		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+        	</script>
+        <![endif]-->
+
+</head>
+
+<body>	
+
+	<h4> Hackathon 2015- Team 6- Melissa Tang, Yi Wang, Minal Kondawar, Jeremy DeFossett</h>
+        
+	<div id="mainframe">	
+	
+		 
+		<canvas id="backgroundCanvas" width="500" height="500"/>
+			<script>
+      			var canvas = document.getElementById('backgroundCanvas');
+      			var cont = canvas.getContext('2d');
+      			var imageObj = new Image();
+				var imageObj1 = new Image();
+				var imageObj2 = new Image();
+				var imageObj3= new Image();
+				var imageObj4=new Image();
+				var girlImage=new Image();
+				var element=document.getElementById("mainframe");
+
+				var can=document.getElementById("backgroundCanvas");
+				var context=can.getContext("2d");
+
+				context.fillRect(20,50,20,40);
+				context.fillStyle="orange";
+				var keys=[];
+				var flag1=true;
+				var flag2=true;
+				var flag3=true;
+				var flag4=true;
+				var flag5=true;
+				var flag6=true;
+				var flag7=true;
+				var flag8=true;
+				var width=500, height=500, speed=3;
+				var increase=50;
+				var player={
+						x:100,
+						y:270,
+						width:20,
+						height:20
+				};
+				var score=0;
+				var gameover=false;
+				var op=0.5;
+				var text="Amy is a new Student She is shy and not confident";
+				var hits=0;
+				var winningscore=1500;
+					
+			
+				window.addEventListener("keydown", function(e){
+						keys[e.keyCode]=true;
+				},false);
+
+
+				window.addEventListener("keyup", function(e){
+						delete keys[e.keyCode];
+				},false);
+
+				/*
+				* up-38
+				* down-40
+				* left-37
+				* right -39
+				* */
+				function pictures() {
+					if(flag1){
+						cont.drawImage(imageObj4, 10, 20,50,50);
+					}
+					else{
+						cont.drawImage(imageObj, 10, 20,100,100);
+					}
+					if(flag2){
+						cont.drawImage(imageObj4, 10, 400,50,50);
+					}
+					else{
+						cont.drawImage(imageObj, 10, 400,100,100);
+					}		
+					if(flag3){
+						cont.drawImage(imageObj4, 40, 250,50,50);
+					}
+					else{
+						cont.drawImage(imageObj1, 40, 250,100,100);
+					}		
+					if(flag4){
+						cont.drawImage(imageObj4, 400, 20,50,50);
+					}
+					else{
+						cont.drawImage(imageObj1, 400, 20,100,100);
+					}		
+					if(flag5){
+						cont.drawImage(imageObj4, 120, 100,50,50);
+					}
+					else{
+						cont.drawImage(imageObj2, 120, 100,100,100);
+					}		 
+					if(flag6){
+						cont.drawImage(imageObj4, 220, 400,50,50);
+					}
+					else{
+						cont.drawImage(imageObj2, 220, 400,100,100);
+					}						 
+					if(flag7){
+						cont.drawImage(imageObj4, 200, 200,50,50);
+					}
+					else{
+						 cont.drawImage(imageObj3, 200, 200,100,100);
+					}
+					if(flag8){
+						cont.drawImage(imageObj4, 400, 200,50,50);
+					}
+					else{
+						cont.drawImage(imageObj3, 400, 200,100,100);
+					}					
+									   
+			   }
+		
+
+      			imageObj.src ='images/259.png';
+				imageObj1.src ='images/262.png';
+				imageObj2.src ='images/264.png';
+				imageObj3.src ='images/260.png';
+				imageObj4.src='images/Star .png';
+				girlImage.src='images/girl.png';
+				
+				function game(){
+					update();
+					render();
+				}
+
+				function update(){
+				//	cont.drawImage(imageObj, 10, 20,50,50);
+					if(keys[38])player.y-=speed;
+					if(keys[40])player.y+=speed;
+					if(keys[37])player.x-=speed;
+					if(keys[39])player.x+=speed;
+					if(player.x<0) player.x=0;
+					if(player.y<0) player.y=0;
+					if(player.x>=width-player.width) player.x=width-player.width;
+					if(player.y>=height-player.height) player.y=height-player.height;
+				
+					if(collision(player,10,20,50,50)){
+							flag1=false;
+							increase+=10;
+				//			element.style.opacity=op-0.1;
+					//		element.style.filter='alpha(opacity=40)';
+							score+=100;
+							text="Encouragement helps her to move in darkness. Increases the visibility";
+							hits++;		
+					}
+					if(collision(player,10, 400,50,50)){
+							flag2=false;
+							increase+=8;
+				//			element.style.opacity=op-0.1;
+                                                  //      element.style.filter='alpha(opacity=30)';
+							hits++;
+							score+=100;
+							text="Encouragement helps her to become more confident";
+
+					}
+					if(collision(player,40, 250,50,50)){
+							flag3=false;
+							increase-=5;
+				//			element.style.opacity=op+0.1;
+                  //                                      element.style.filter='alpha(opacity=90)';
+							hits++;
+							score-=50;
+							text="Anger hurts her. Visibilty decreases";
+					}
+					if(collision(player,400, 20,50,50)){
+							flag4=false;
+							increase-=5;
+				//			element.style.opacity=op+0.1;
+                                                 //       element.style.filter='alpha(opacity=70)';
+							score-=50;
+									text="Anger makes her to less confident";
+							hits++;
+					}
+					if(collision(player,120, 100,50,50)){
+							flag5=false;
+							increase-=5;
+				//			element.style.opacity=op+0.1;
+                                                  //      element.style.filter='alpha(opacity=90)';
+							hits++;
+								score-+50;
+							text="Discouragement makes her hard to move in darkness";
+					}
+					if(collision(player,220, 400,50,50)){
+							flag6=false;
+							increase-=5;
+				//			element.style.opacity=op+0.1;
+                          //                              element.style.filter='alpha(opacity=80)';
+							hits++;
+							score-=50;
+							text="Amy fears to start something new";
+					}
+					if(collision(player,200, 200,50,50)){
+							flag7=false;
+							increase+=10;
+				//			element.style.opacity=op-0.1;
+                                          //              element.style.filter='alpha(opacity=30)';
+							hits++;
+							score+=50;
+							text="Appreciation give Amy to share new ideas";
+
+
+					}
+					if(collision(player,400, 200,50,50)){
+
+						flag8=false;
+							increase+=10;
+				//			element.style.opacity=op-0.1;
+			//				element.style.filter='alpha(opacity=10)';
+							hits++;
+							score+=100;
+							text="Apprreciation helps her to boost her confidence";
+					}
+					if(!flag1 && !flag2 && !flag3 && !flag4 && !flag5 && !flag6 && !flag7 && !flag8){
+						gameover=true;
+					}	
+		
+					
+				}
+
+	
+
+				function collision(first, a,b,c,d){
+
+					return !(first.x > (a + c) || first.x + first.width < a || first.y > (b + d) || first.y + first.height < b);
+
+				}	
+
+
+			function render(){
+		
+				context.clearRect(0,0,width,height);		
+				pictures();
+//				context.fillRect(player.x, player.y, player.width, player.height);
+				cont.drawImage(girlImage,player.x, player.y, player.width+increase, player.height+increase);
+						 context.fillRect(player.x, player.y, player.width, player.height);
+				context.fillStyle="white";
+				context.font="bold 30px helvetica";
+				context.fillText(score,200,50);
+				if(gameover){
+					context.fillStyle="white";
+                                	context.font="bold 50px helvetica";
+                                	context.fillText("game over",100,200);
+					score=0;
+				}	
+				context.fillStyle="yellow";
+                                context.font="bold 16px helvetica";
+                                context.fillText(text,20,480);
+
+			
+
+
+
+
+			}	
+
+			setInterval(function(){
+				game();
+			},1000/30)
+
+    		</script>
+	</div>
+
+<script src ="http://code.jquery.com/jquery-latest.js"></script>
+
+</body>
+
+</html>
+
+
+
